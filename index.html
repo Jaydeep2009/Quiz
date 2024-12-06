@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self-Confidence Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #4a4a4a;
+        }
+        .question {
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .option {
+            display: flex;
+            align-items: center;
+        }
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+            text-align: center;
+            font-size: 18px;
+        }
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            .question {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Self-Confidence Test</h1>
+    <form id="confidenceTest">
+        <div class="question">
+            <p>1. I feel confident in social situations</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="q1" value="1" required> Strongly Disagree</label>
+                <label class="option"><input type="radio" name="q1" value="2"> Disagree</label>
+                <label class="option"><input type="radio" name="q1" value="3"> Neither Agree nor Disagree</label>
+                <label class="option"><input type="radio" name="q1" value="4"> Agree</label>
+                <label class="option"><input type="radio" name="q1" value="5"> Strongly Agree</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>2. I can handle criticism well</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="q2" value="1" required> Strongly Disagree</label>
+                <label class="option"><input type="radio" name="q2" value="2"> Disagree</label>
+                <label class="option"><input type="radio" name="q2" value="3"> Neither Agree nor Disagree</label>
+                <label class="option"><input type="radio" name="q2" value="4"> Agree</label>
+                <label class="option"><input type="radio" name="q2" value="5"> Strongly Agree</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>3. I believe in my abilities</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="q3" value="1" required> Strongly Disagree</label>
+                <label class="option"><input type="radio" name="q3" value="2"> Disagree</label>
+                <label class="option"><input type="radio" name="q3" value="3"> Neither Agree nor Disagree</label>
+                <label class="option"><input type="radio" name="q3" value="4"> Agree</label>
+                <label class="option"><input type="radio" name="q3" value="5"> Strongly Agree</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>4. I am comfortable speaking in public</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="q4" value="1" required> Strongly Disagree</label>
+                <label class="option"><input type="radio" name="q4" value="2"> Disagree</label>
+                <label class="option"><input type="radio" name="q4" value="3"> Neither Agree nor Disagree</label>
+                <label class="option"><input type="radio" name="q4" value="4"> Agree</label>
+                <label class="option"><input type="radio" name="q4" value="5"> Strongly Agree</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>5. I can achieve my goals</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="q5" value="1" required> Strongly Disagree</label>
+                <label class="option"><input type="radio" name="q5" value="2"> Disagree</label>
+                <label class="option"><input type="radio" name="q5" value="3"> Neither Agree nor Disagree</label>
+                <label class="option"><input type="radio" name="q5" value="4"> Agree</label>
+                <label class="option"><input type="radio" name="q5" value="5"> Strongly Agree</label>
+            </div>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('confidenceTest').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let total = 0;
+            const questions = ['q1', 'q2', 'q3', 'q4', 'q5'];
+            questions.forEach(q => {
+                const selected = document.querySelector(`input[name="${q}"]:checked`);
+                if (selected) {
+                    total += parseInt(selected.value);
+                }
+            });
+            document.getElementById('result').textContent = `Your self-confidence score is: ${total} out of 25`;
+        });
+    </script>
+</body>
+</html>
